@@ -28,7 +28,7 @@ int main(int argc, char *argv[]){
             NULL,
             NULL,
             FALSE,
-            CREATE_NEW_CONSOLE,
+            0,
             NULL,
             NULL,
             &si,
