@@ -2,8 +2,10 @@
 #include <stdio.h>
 #include <windows.h>
 #include "WaterError.h"
+#include "H2Obanner.h"
 
 int main(){
-    DisplayError();
-    return 0;
+    long interval;
+
+    printBanner();
 }
