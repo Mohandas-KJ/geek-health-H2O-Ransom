@@ -1,0 +1,42 @@
+// This is the definition file of Scheduler.h
+// Imports
+#include <windows.h>
+#include "Scheduler.h"
+
+// Threaded Timer
+DWORD WINAPI ErrorTimer(LPVOID lpParam){
+    //Starting a While loop
+    while (1)
+    {
+        Sleep(1000);
+    }
+    
+}
+
+// For starting a parent process
+void StartProcess(void){
+
+    //The setter and setters
+    STARTUPINFO si;             // This gives the configuration to windows for launching the application
+    PROCESS_INFORMATION pi;     // This is used to get the information back from Windows like PID, SID etc....
+
+    // Allocate Zero in the Memory location si and pi
+    ZeroMemory(&si,sizeof(si)); 
+    si.cb = sizeof(si);
+    ZeroMemory(&pi,sizeof(pi));
+
+    for(int i = 0; i < 12; i++){
+        CreateProcess(
+            NULL,
+            "hydrate.exe child",
+            NULL,
+            NULL,
+            FALSE,
+            0,
+            NULL,
+            NULL,
+            &si,
+            &pi
+        );
+    }
+}
