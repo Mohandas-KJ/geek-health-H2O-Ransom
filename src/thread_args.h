@@ -6,6 +6,7 @@
 typedef struct {
     DWORD sleep_time;
     int dialog_is;
+    volatile int running;
 } ThreadArgs;
 
 #endif

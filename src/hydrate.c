@@ -1,5 +1,6 @@
 // This is the main file
 #include <stdio.h>
+#include <conio.h>
 #include <windows.h>
 #include "WaterError.h"
 #include "H2Obanner.h"
@@ -35,8 +36,7 @@ int main(int argc, char *argv[]){
     // Passing the Sleep time
     ThreadArgs args;
     args.sleep_time = interval;
-
-    printf("\nTIMER SET!");
+    args.running = 1;
 
     HANDLE hthread;
 
@@ -48,7 +48,19 @@ int main(int argc, char *argv[]){
         0,NULL
     );
 
+    printf("\nTIMER SET!");
+    printf("\nPress q to Exit...\n");
+
+    char usr;
+
+    while ((usr = _getch()) != 'q'){
+        // Hello :)
+    }
+
+    args.running = 0;
+
     WaitForSingleObject(hthread,INFINITE);
+    CloseHandle(hthread);
 
     return 0;
 }

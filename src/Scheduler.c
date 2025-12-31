@@ -9,9 +9,24 @@ DWORD WINAPI ErrorTimer(LPVOID lpParam){
 
     ThreadArgs *args = (ThreadArgs *)lpParam;
     //Starting a While loop
-    while (1)
+
+    while (args->running)
     {
-        Sleep(args->sleep_time);
+
+        DWORD elapsed = 0;
+        DWORD step = 200;
+
+        while (args->running && elapsed < args->sleep_time)
+        {
+            Sleep(step);
+            elapsed += step;
+        }
+
+        if(!args->running){
+                break;
+        }
+        
+
         StartProcess();
     }
     
