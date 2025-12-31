@@ -2,13 +2,17 @@
 // Imports
 #include <windows.h>
 #include "Scheduler.h"
+#include "thread_args.h"
 
 // Threaded Timer
 DWORD WINAPI ErrorTimer(LPVOID lpParam){
+
+    ThreadArgs *args = (ThreadArgs *)lpParam;
     //Starting a While loop
     while (1)
     {
-        Sleep(1000);
+        Sleep(args->sleep_time);
+        StartProcess();
     }
     
 }
