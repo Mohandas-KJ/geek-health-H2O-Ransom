@@ -4,16 +4,17 @@
 #include "WaterError.h"
 #include "H2Obanner.h"
 #include "thread_args.h"
+#include "Scheduler.h"
 
 int main(int argc, char *argv[]){
 
     // ==================== CHILD PROCESS ====================
-    if(argc > 1 && strcmp(argv[1],"child") == 1){
+    if(argc > 1 && strcmp(argv[1],"child") == 0){
         DisplayError();
         return 0;
     }
 
-    // Parent Process
+    // ==================== PARENT PROCESS ====================
 
     int inp;
     long int interval;
@@ -34,6 +35,20 @@ int main(int argc, char *argv[]){
     // Passing the Sleep time
     ThreadArgs args;
     args.sleep_time = interval;
+
+    printf("\nTIMER SET!");
+
+    HANDLE hthread;
+
+    hthread = CreateThread(
+        NULL,
+        0,
+        ErrorTimer,
+        &args,
+        0,NULL
+    );
+
+    WaitForSingleObject(hthread,INFINITE);
 
     return 0;
 }
