@@ -20,6 +20,8 @@ int main(int argc, char *argv[]){
     int inp;
     long int interval;
     
+    system("cls");
+
     // The Warm Welcome
     printBanner(); // Print the Banner for a design
     printf("\nWELCOME TO H2O RANSOM!\n");
