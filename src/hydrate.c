@@ -38,6 +38,7 @@ int main(int argc, char *argv[]){
     // Passing the Sleep time
     ThreadArgs args;
     args.sleep_time = interval;
+    args.n_alert = 0;
     args.running = 1;
 
     HANDLE hthread;
@@ -60,6 +61,8 @@ int main(int argc, char *argv[]){
     }
 
     args.running = 0;
+
+    printf("\nSession Summary:\n- Alerts Triggered: %d\n",args.n_alert);
 
     WaitForSingleObject(hthread,INFINITE);
     CloseHandle(hthread);

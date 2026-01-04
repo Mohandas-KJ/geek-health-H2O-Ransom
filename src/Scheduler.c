@@ -26,8 +26,9 @@ DWORD WINAPI ErrorTimer(LPVOID lpParam){
                 break;
         }
         
-
         StartProcess();
+
+        args->n_alert += 1;
     }
     
 }
