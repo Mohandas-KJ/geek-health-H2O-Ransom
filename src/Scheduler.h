@@ -3,6 +3,6 @@
 #include <windows.h>
 
 DWORD WINAPI ErrorTimer(LPVOID lpParam);
-void StartProcess(void);
+void StartProcess(int n_dialog);
 
 #endif

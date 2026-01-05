@@ -26,15 +26,15 @@ DWORD WINAPI ErrorTimer(LPVOID lpParam){
                 break;
         }
         
-        StartProcess();
-
+        StartProcess(args->dialog_n);
+        args->dialog_shown += args->dialog_n;
         args->n_alert += 1;
     }
     
 }
 
 // For starting a parent process
-void StartProcess(void){
+void StartProcess(int n_dialog){
 
     //The setter and setters
     STARTUPINFO si;             // This gives the configuration to windows for launching the application
@@ -45,7 +45,7 @@ void StartProcess(void){
     si.cb = sizeof(si);
     ZeroMemory(&pi,sizeof(pi));
 
-    for(int i = 0; i < 12; i++){
+    for(int i = 0; i < n_dialog; i++){
         CreateProcess(
             NULL,
             "hydrate.exe child",

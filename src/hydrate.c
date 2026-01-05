@@ -39,6 +39,8 @@ int main(int argc, char *argv[]){
     ThreadArgs args;
     args.sleep_time = interval;
     args.n_alert = 0;
+    args.dialog_shown = 0;
+    args.dialog_n = 12;
     args.running = 1;
 
     HANDLE hthread;
@@ -62,7 +64,7 @@ int main(int argc, char *argv[]){
 
     args.running = 0;
 
-    printf("\nSession Summary:\n- Alerts Triggered: %d\n",args.n_alert);
+    printf("\nSession Summary:\n- Alerts Triggered: %d\n- Dialogs Shown: %d\n",args.n_alert,args.dialog_shown);
 
     WaitForSingleObject(hthread,INFINITE);
     CloseHandle(hthread);
