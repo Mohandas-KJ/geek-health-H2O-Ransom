@@ -17,3 +17,12 @@
 
 ## CONCLUSION TR - 1:  
 **This Process is more complex a Dialog Box in Windows do not respond to handles, events or threads. So, it's very complex to co-ordinate them. This is unwanted in the developmental phase. It triggers the User to Drink Water.**
+
+# Display Runtime at end (TR - 1):
+- Get a `DWORD start` in Milliseconds `GetTickCount()`
+- At the code end Get `end millisecs` 
+- Convert them to `Seconds`
+- Find `hour` from `seconds'
+- Find `Minutes`
+- Find `Seconds remaining`
+- Print them neatly
