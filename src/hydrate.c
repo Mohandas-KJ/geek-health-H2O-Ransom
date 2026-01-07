@@ -19,7 +19,7 @@ void DisplayRuntime(DWORD start){
     DWORD Minutes = (tot_Seconds % 3600) / 60;   // Calculate Minute from Seconds
     DWORD Seconds = tot_Seconds / 60;  // Calculate Remaining Seconds
 
-    printf("- Runtime: %02lu Hour %02lu Minute %02lu Seconds\n",Hour,Minutes,Seconds);
+    printf("- Runtime: %02lu:%02lu:%02lu\n",Hour,Minutes,Seconds);
 
 }
 
@@ -54,12 +54,12 @@ int main(int argc, char *argv[]){
     interval = inp * 60 * 1000;           // Convert the Entered Minute input to milliseconds to pass it as DWORD to Sleep function
 
     // Passing the Sleep time
-    ThreadArgs args;
-    args.sleep_time = interval;
-    args.n_alert = 0;
-    args.dialog_shown = 0;
-    args.dialog_n = 12;
-    args.running = 1;
+    ThreadArgs args;               // Structure Init
+    args.sleep_time = interval;    // The sleep interval
+    args.n_alert = 0;              // Number of Alerts made to user
+    args.dialog_shown = 0;         // For Storing how many dialogs shown
+    args.dialog_n = 12;            // The Number of dialogs to show (Default = 12)
+    args.running = 1;              // Flag for Graceful control
 
     HANDLE hthread;
 
