@@ -7,6 +7,22 @@
 #include "thread_args.h"
 #include "Scheduler.h"
 
+// Display the Total Runtime
+void DisplayRuntime(DWORD start){
+    DWORD end = GetTickCount();  // Get the Ending Time from the system
+    DWORD Total = end - start;
+
+    // Seconds Conversion
+    DWORD tot_Seconds = Total / 1000;
+
+    DWORD Hour = tot_Seconds / 3600;      // Calculate Hour from Seconds
+    DWORD Minutes = (tot_Seconds % 3600) / 60;   // Calculate Minute from Seconds
+    DWORD Seconds = tot_Seconds / 60;  // Calculate Remaining Seconds
+
+    printf("- Runtime: %02lu Hour %02lu Minute %02lu Seconds\n",Hour,Minutes,Seconds);
+
+}
+
 int main(int argc, char *argv[]){
 
     // ==================== CHILD PROCESS ====================
@@ -16,6 +32,8 @@ int main(int argc, char *argv[]){
     }
 
     // ==================== PARENT PROCESS ====================
+
+    DWORD start = GetTickCount();
 
     int inp;
     long int interval;
@@ -64,7 +82,9 @@ int main(int argc, char *argv[]){
 
     args.running = 0;
 
-    printf("\nSession Summary:\n- Alerts Triggered: %d\n- Dialogs Shown: %d\n",args.n_alert,args.dialog_shown);
+    printf("Session Summary:\n");
+    DisplayRuntime(start);
+    printf("- Alerts Triggered: %d\n- Dialogs Shown: %d\n",args.n_alert,args.dialog_shown);
 
     WaitForSingleObject(hthread,INFINITE);
     CloseHandle(hthread);
