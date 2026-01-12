@@ -1,7 +1,7 @@
 // This is the main file
 #include <stdio.h>
-#include <conio.h>
-#include <windows.h>
+#include <unistd.h>
+#include <time.h>
 #include "WaterError.h"
 #include "H2Obanner.h"
 #include "thread_args.h"
