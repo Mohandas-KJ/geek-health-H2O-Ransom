@@ -1,3 +1,4 @@
+#define _POSIX_C_SOURCE 199309L
 // This is the main file
 #include <stdio.h>
 #include <unistd.h>  // linux
@@ -63,7 +64,7 @@ int main(int argc, char *argv[]){
     args.dialog_n = 12;            // The Number of dialogs to show (Default = 12)
     args.running = 1;              // Flag for Graceful control
 
-    pthreat_t thread;       // linux
+    pthread_t thread;       // linux
     pthread_create(&thread, NULL, ErrorTimer, &args);   // linux
 
     printf("\nTIMER SET!");
