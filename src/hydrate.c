@@ -63,15 +63,8 @@ int main(int argc, char *argv[]){
     args.dialog_n = 12;            // The Number of dialogs to show (Default = 12)
     args.running = 1;              // Flag for Graceful control
 
-    HANDLE hthread;
-
-    hthread = CreateThread(
-        NULL,
-        0,
-        ErrorTimer,
-        &args,
-        0,NULL
-    );
+    pthreat_t thread;       // linux
+    pthread_create(&thread, NULL, ErrorTimer, &args);   // linux
 
     printf("\nTIMER SET!");
     printf("\nPress q to Exit...\n");
