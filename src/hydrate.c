@@ -17,7 +17,7 @@ void DisplayRuntime(DWORD start){
 
     DWORD Hour = tot_Seconds / 3600;      // Calculate Hour from Seconds
     DWORD Minutes = (tot_Seconds % 3600) / 60;   // Calculate Minute from Seconds
-    DWORD Seconds = tot_Seconds / 60;  // Calculate Remaining Seconds
+    DWORD Seconds = tot_Seconds % 60;  // Calculate Remaining Seconds
 
     printf("- Runtime: %02lu:%02lu:%02lu\n",Hour,Minutes,Seconds);
 
