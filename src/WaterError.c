@@ -1,5 +1,6 @@
 // This is the definition if the header file that contains the function
 // Includes
+#include <stdlib.h>
 #include "WaterError.h"
 
 void DisplayError(void){

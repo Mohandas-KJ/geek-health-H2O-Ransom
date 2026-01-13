@@ -4,6 +4,8 @@
 #include <unistd.h>  // linux
 #include <time.h>    // linux
 #include <pthread.h>  //linux
+#include <stdlib.h>
+#include <string.h>
 #include "WaterError.h"
 #include "H2Obanner.h"
 #include "thread_args.h"
