@@ -7,6 +7,8 @@ void DisplayError(void){
     system(
         "zenity --error "
         "--title=\"Hydration Error\" "
-        "--text=\"Please have a break\nDrink water to continue\""
+        "--width=400 "
+        "--text=\"Please have a break\nDrink water to continue\" "
+        "2>/dev/null"
     );
 }
