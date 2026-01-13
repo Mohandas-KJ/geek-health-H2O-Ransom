@@ -39,27 +39,13 @@ void *ErrorTimer(void *lpParam){
 // For starting a parent process
 void StartProcess(int n_dialog){
 
-    //The setter and setters
-    STARTUPINFO si;             // This gives the configuration to windows for launching the application
-    PROCESS_INFORMATION pi;     // This is used to get the information back from Windows like PID, SID etc....
-
-    // Allocate Zero in the Memory location si and pi
-    ZeroMemory(&si,sizeof(si)); 
-    si.cb = sizeof(si);
-    ZeroMemory(&pi,sizeof(pi));
-
     for(int i = 0; i < n_dialog; i++){
-        CreateProcess(
-            NULL,
-            "hydrate.exe child",
-            NULL,
-            NULL,
-            FALSE,
-            0,
-            NULL,
-            NULL,
-            &si,
-            &pi
-        );
+        pid_t pid = fork();
+
+        if(pid == 0){
+            //Start the Child Process
+            execlp("./hydrate","hydrate","child",NULL);
+            _exit(1); // exit on failed execution
+        }
     }
 }
