@@ -1,11 +1,14 @@
 // This is the definition file of Scheduler.h
 // Imports
-#include <windows.h>
+#include <unistd.h>
+#include <pthread.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include "Scheduler.h"
 #include "thread_args.h"
 
 // Threaded Timer
-DWORD WINAPI ErrorTimer(LPVOID lpParam){
+void *ErrorTimer(void *lpParam){
 
     ThreadArgs *args = (ThreadArgs *)lpParam;
     //Starting a While loop
@@ -13,12 +16,12 @@ DWORD WINAPI ErrorTimer(LPVOID lpParam){
     while (args->running)
     {
 
-        DWORD elapsed = 0;
-        DWORD step = 200;
+        unsigned long elapsed = 0;
+        unsigned long step = 200;
 
         while (args->running && elapsed < args->sleep_time)
         {
-            Sleep(step);
+            usleep(step * 1000);
             elapsed += step;
         }
 
