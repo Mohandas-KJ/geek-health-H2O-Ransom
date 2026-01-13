@@ -1,25 +1,26 @@
 // This is the main file
 #include <stdio.h>
-#include <unistd.h>
-#include <time.h>
+#include <unistd.h>  // linux
+#include <time.h>    // linux
+#include <pthread.h>  //linux
 #include "WaterError.h"
 #include "H2Obanner.h"
 #include "thread_args.h"
 #include "Scheduler.h"
 
 // Display the Total Runtime
-void DisplayRuntime(DWORD start){
-    DWORD end = GetTickCount();  // Get the Ending Time from the system
-    DWORD Total = end - start;
+void DisplayRuntime(struct timespec start){
+    struct timespec end;
+    clock_gettime(CLOCK_MONOTONIC, &end);  // Get Clock end time!
 
-    // Seconds Conversion
-    DWORD tot_Seconds = Total / 1000;
+    // Interval Calculation
+    long tot_Seconds = end.tv_sec - start.tv_sec;
 
-    DWORD Hour = tot_Seconds / 3600;      // Calculate Hour from Seconds
-    DWORD Minutes = (tot_Seconds % 3600) / 60;   // Calculate Minute from Seconds
-    DWORD Seconds = tot_Seconds / 60;  // Calculate Remaining Seconds
+    int Hour = tot_Seconds / 3600;      // Calculate Hour from Seconds
+    int Minutes = (tot_Seconds % 3600) / 60;   // Calculate Minute from Seconds
+    int Seconds = tot_Seconds / 60;  // Calculate Remaining Seconds
 
-    printf("- Runtime: %02lu:%02lu:%02lu\n",Hour,Minutes,Seconds);
+    printf("- Runtime: %02d:%02d:%02d\n",Hour,Minutes,Seconds);
 
 }
 
@@ -33,7 +34,8 @@ int main(int argc, char *argv[]){
 
     // ==================== PARENT PROCESS ====================
 
-    DWORD start = GetTickCount();
+    struct timespec start;
+    clock_gettime(CLOCK_MONOTONIC, &start);
 
     int inp;
     long int interval;
