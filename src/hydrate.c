@@ -78,7 +78,7 @@ int main(int argc, char *argv[]){
 
     char usr;
 
-    while ((usr = _getch()) != 'q'){
+    while ((usr = getchar()) != 'q'){
         // Hello :)
     }
 
