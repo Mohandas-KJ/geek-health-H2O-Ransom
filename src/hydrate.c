@@ -40,7 +40,7 @@ int main(int argc, char *argv[]){
     int inp;
     long int interval;
     
-    system("cls");
+    system("clear");  // linux
 
     // The Warm Welcome
     printBanner(); // Print the Banner for a design
@@ -81,8 +81,7 @@ int main(int argc, char *argv[]){
     DisplayRuntime(start);
     printf("- Alerts Triggered: %d\n- Dialogs Shown: %d\n",args.n_alert,args.dialog_shown);
 
-    WaitForSingleObject(hthread,INFINITE);
-    CloseHandle(hthread);
+    pthread_join(thread, NULL); // linux
 
     return 0;
 }
