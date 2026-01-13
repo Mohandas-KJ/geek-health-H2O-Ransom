@@ -21,7 +21,7 @@ void DisplayRuntime(struct timespec start){
 
     int Hour = tot_Seconds / 3600;      // Calculate Hour from Seconds
     int Minutes = (tot_Seconds % 3600) / 60;   // Calculate Minute from Seconds
-    int Seconds = tot_Seconds / 60;  // Calculate Remaining Seconds
+    int Seconds = tot_Seconds % 60;  // Calculate Remaining Seconds
 
     printf("- Runtime: %02d:%02d:%02d\n",Hour,Minutes,Seconds);
 
