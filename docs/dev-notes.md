@@ -18,7 +18,7 @@
 ## CONCLUSION TR - 1:  
 **This Process is more complex a Dialog Box in Windows do not respond to handles, events or threads. So, it's very complex to co-ordinate them. This is unwanted in the developmental phase. It triggers the User to Drink Water.**
 
-# Display Runtime at end (TR - 1):
+# Display Runtime at end (TR - 2):
 - Get a `DWORD start` in Milliseconds `GetTickCount()`
 - At the code end Get `end millisecs` 
 - Convert them to `Seconds`
@@ -26,3 +26,12 @@
 - Find `Minutes`
 - Find `Seconds remaining`
 - Print them neatly
+
+## Fixes:
+- No fixes made
+- The assumed model has worked correctly 
+
+## Conclusion TR - 2:
+- `GetTickCount()` is a part of `windows` header.
+- For just experimental or algorithamic case we just use `clock()` from `time.h`
+- The implemented version is windows 🪟 friendly and it for this case the precision is least important!
